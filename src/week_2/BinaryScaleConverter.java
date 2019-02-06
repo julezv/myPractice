@@ -12,17 +12,17 @@ package week_2; /**
  */
 
 public class BinaryScaleConverter {
-    public static SignedMagnitudeRepresentation signedmagnitude = new SignedMagnitudeRepresentation();
+    public static SignedMagnitudeRepresentation signedMagnitude = new SignedMagnitudeRepresentation();
     public static OnesComplementRepresentation onesComplement = new OnesComplementRepresentation();
+
     public static void main(String[] args) {
-        System.out.println(convertToJoinedString(signedmagnitude.simpleConverter(-3)));
-        System.out.println(convertToJoinedString(onesComplement.simpleConverter(-3)));
+        System.out.println(convertToJoinedString(signedMagnitude.simpleConverter(-3)));
+        System.out.println(convertToJoinedString(onesComplement.simpleConverter(-128)));
     }
 
     public static class SignedMagnitudeRepresentation {
         private int[] dealWithNegativeNumbers(int a) {
             int b = Math.abs(a);
-            //ArrayList<Integer> ar = new ArrayList<Integer>(Arrays.asList( 0, 0, 0, 0, 0, 0, 0, 1) );
             int[] ar = new int[]{0, 0, 0, 0, 0, 0, 0, 1};
 
 
@@ -76,27 +76,27 @@ public class BinaryScaleConverter {
 
     public static class OnesComplementRepresentation {
         private int[] dealWithNegativeNumbers(int a) {
+            int[] ar = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+            int[] ar2 = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
             int b = Math.abs(a);
-            //ArrayList<Integer> ar = new ArrayList<Integer>(Arrays.asList( 0, 0, 0, 0, 0, 0, 0, 1) );
-            int[] ar = new int[]{1, 1, 1, 1, 1, 1, 1, 1};
-
-
-            if (Math.abs(a) > 128) {
+            if (b > 128) {
                 throw new ArithmeticException("Absolute value of negative input cannot be larger than 128");
             }
-            for (int i = 0; i < 7; i++) {
-                while (!(b < 2)) {
+            while (!(b < 2)) {
+                for (int i = 0; i < 7; i++) {
+                    ar[i] = b % 2;
                     b = b / 2;
-                    if (b % 2 == 1){
-                        ar[i] = 0;
-                    }
-                    if (b % 2 == 0){
-                        ar[i] = 1;
-                    }
                 }
             }
             reverse(ar);
-            return ar;
+            for (int i = 0; i < ar.length; i++) {
+                if (ar[i] == 0) {
+                    ar2[i] = 1;
+                } else {
+                    ar2[i] = 0;
+                }
+            }
+            return ar2;
         }
 
         private int[] dealWithPositiveNumbers(int a) {
@@ -117,17 +117,14 @@ public class BinaryScaleConverter {
         private int[] simpleConverter(int a) {
             int[] ar = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
             int[] ar2 = new int[]{0, 0, 0, 0, 0, 0, 0, 1};
-
             if (a > 0) {
                 return dealWithPositiveNumbers(a);
             }
             if (a < 0) {
                 return dealWithNegativeNumbers(a);
-
             }
             if (a == 0) {
                 return ar;
-
             }
             return ar2;
         }
@@ -141,6 +138,7 @@ public class BinaryScaleConverter {
         }
         return builder.toString();
     }
+
     private static void reverse(int[] data) {
         for (int left = 0, right = data.length - 1; left < right; left++, right--) {
             // swap the values at the left and right indices
@@ -149,12 +147,11 @@ public class BinaryScaleConverter {
             data[right] = temp;
         }
     }
-
-    public static Long convertToLong(int[] a) {
-        String result = convertToJoinedString(a);
-        Long resultInt = Long.parseLong(result);
-        return resultInt;
-    }
+//    public static Long convertToLong(int[] a) {
+//        String result = convertToJoinedString(a);
+//        Long resultInt = Long.parseLong(result);
+//        return resultInt;
+//    }
 }
 
 
