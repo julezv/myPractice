@@ -9,9 +9,10 @@ package week_2; /**
  * реализовать перевод в двоичную систему счисления с запоминанием всех
  * остатков.
  * Kакие методы выделить ?
+ *
  */
 
-public class BinaryScaleConverter {
+public class BinaryScaleConverter{
     public static SignedMagnitudeRepresentation signedMagnitude = new SignedMagnitudeRepresentation();
     public static OnesComplementRepresentation onesComplement = new OnesComplementRepresentation();
 

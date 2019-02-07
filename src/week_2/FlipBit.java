@@ -5,10 +5,10 @@ package week_2;
  */
 public class FlipBit {
     public static void main(String[] args) {
-        System.out.println(flipBit(35, 2));
+        System.out.println(flipBit(35, 1));
     }
     public static int flipBit(int value, int bitIndex) {
-        return value^(1<<bitIndex-1);
+        return value^(1<<bitIndex);
     }
 
 }
