@@ -57,7 +57,7 @@ public class BinaryScaleConverter {
 
         private int[] simpleConverter(int a) {
             int[] ar = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
-            int[] ar2 = new int[]{0, 0, 0, 0, 0, 0, 0, 1};
+            int[] ar2 =  new int[]{0, 0, 0, 0, 0, 0, 0, 1};
 
             if (a > 0) {
                 return dealWithPositiveNumbers(a);
