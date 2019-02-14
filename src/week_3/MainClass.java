@@ -12,7 +12,6 @@ public class MainClass {
             data[right] = temp;
             ++left;
         }
-
     }
 
     private static String convertToJoinedString(int[] numbers) {
@@ -24,13 +23,12 @@ public class MainClass {
             int number = var2[var4];
             builder.append(number);
         }
-
         return builder.toString();
     }
 
     private static int[] dealWithNegativeNumbersSignedMagnitude(int a) {
-        if (a == -1){
-            return new int[] {1,0,0,0,0,0,0,1};
+        if (a == -1) {
+            return new int[]{1, 0, 0, 0, 0, 0, 0, 1};
         }
         int b = Math.abs(a);
         int[] ar = new int[]{0, 0, 0, 0, 0, 0, 0, 1};
@@ -49,9 +47,9 @@ public class MainClass {
         }
     }
 
-    private  static int[] dealWithNegativeNumbersOnesComplement(int a) {
-        if (a == -1){
-            return new int[] {1,1,1,1, 1,1,1,0};
+    private static int[] dealWithNegativeNumbersOnesComplement(int a) {
+        if (a == -1) {
+            return new int[]{1, 1, 1, 1, 1, 1, 1, 0};
         }
         int[] ar = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
         int[] ar2 = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
@@ -105,7 +103,7 @@ public class MainClass {
             return convertToJoinedString(dealWithNegativeNumbersSignedMagnitude(a));
         }
         if (a == 0) {
-            return  convertToJoinedString(ar);
+            return convertToJoinedString(ar);
         }
         return convertToJoinedString(ar2);
 
@@ -121,7 +119,7 @@ public class MainClass {
             return convertToJoinedString(dealWithNegativeNumbersOnesComplement(a));
         }
         if (a == 0) {
-            return convertToJoinedString( ar);
+            return convertToJoinedString(ar);
         }
         return convertToJoinedString(ar2);
     }

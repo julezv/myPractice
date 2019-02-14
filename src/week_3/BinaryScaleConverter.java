@@ -25,7 +25,6 @@ public class BinaryScaleConverter {
     public static void main(String[] args) {
         System.out.println(getSignedMagnitudeRepresentation(-2));
         System.out.println(getOnesComplementRepresentation(-2));
-
     }
 }
 

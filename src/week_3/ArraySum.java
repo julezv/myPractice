@@ -13,7 +13,7 @@ public class ArraySum {
     public static int[] sum(int [] a, int [] b) {
         int i;
         int j;
-        int container[] = new int[a.length];;
+        int container[] = new int[a.length];
         if (a.length >= b.length) {
             container = new int[a.length];
             for (i = 0; i < b.length; ++i) {
@@ -39,7 +39,6 @@ public class ArraySum {
         StringBuilder builder = new StringBuilder();
         int[] var2 = numbers;
         int var3 = numbers.length;
-
         for (int var4 = 0; var4 < var3; ++var4) {
             int number = var2[var4];
             builder.append(number + " ");
