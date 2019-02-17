@@ -1,5 +1,7 @@
 package week_3;
 
+import java.util.Arrays;
+
 /**
  * Created by yuliav on 13/02/2019.
  * Реализуйте метод, сливающий два отсортированных по неубыванию массива чисел
@@ -10,72 +12,63 @@ package week_3;
  **/
 public class SortArray {
     public static void main(String[] args) {
-        System.out.println(convertToJoinedString(sortArrayWithWhile(new int[]{1, 2}, new int[]{1})));
+        System.out.println(Arrays.toString(sortedJoin(new int[]{}, new int[]{5})));
     }
 
-    private static int[] sortArray(int[] a, int[] b) {
-        int c[] = new int[a.length + b.length];
+    private static int[] sortedJoin(int[] a, int[] b) {
+        if (a.length < b.length) {
+            int[] c = a; // c < b
+            a = b; // c < a,b
+            b = c; // b equal to smallest
+        } // a.length >= b.length
+
+        int[] sortedResult = new int[a.length + b.length];
         int i = 0;
         int j = 0;
-        for (int x = 0; x < c.length; x++) {
-            if (i == a.length) {
-                c[x] = b[j];
+        int k;
+        for (k = 0; i < a.length && j < b.length && k < sortedResult.length; ++k) {
+            /*if (i == a.length) {
+                c[k] = b[j];
                 j++;
                 continue;
             }
             if (j == b.length) {
-                c[x] = a[i];
+                c[k] = a[i];
                 i++;
                 continue;
-            }
+            }*/
             if (a[i] < b[j]) {
-                c[x] = a[i];
-                i++;
-            } else {
-                c[x] = b[j];
-                j++;
+                sortedResult[k] = a[i++];
+            } else if (a[i] >= b[j]) {
+                sortedResult[k] = b[j++];
             }
         }
-        return c;
+        if (i <= j) {
+            System.arraycopy(a, i, sortedResult, k, a.length - i);
+        } else {
+            System.arraycopy(b, j, sortedResult, k, b.length - j);
+        }
+        return sortedResult;
     }
 
     private static int[] sortArrayWithWhile(int[] a, int[] b) {
         int c[] = new int[a.length + b.length];
         int i = 0;
         int j = 0;
-        int x = 0;
+        int k = 0;
         while (i < a.length && j < b.length) {
             if (a[i] < b[j]) {
-                c[x] = a[i];
-                i++;
-                x++;
+                c[k++] = a[i++];
             } else {
-                c[x] = b[j];
-                j++;
-                x++;
+                c[k++] = b[j++];
             }
         }
-        while (i < a.length && x < c.length) {
-            c[x] = a[i];
-            i++;
-            x++;
+        while (i < a.length && k < c.length) {
+            c[k++] = a[i++];
         }
-        while (j < b.length && x < c.length) {
-            c[x] = b[j];
-            j++;
-            x++;
+        while (j < b.length && k < c.length) {
+            c[k++] = b[j++];
         }
         return c;
-    }
-
-    private static String convertToJoinedString(int[] numbers) {
-        StringBuilder builder = new StringBuilder();
-        int[] var2 = numbers;
-        int var3 = numbers.length;
-        for (int var4 = 0; var4 < var3; ++var4) {
-            int number = var2[var4];
-            builder.append(number + " ");
-        }
-        return builder.toString();
     }
 }
