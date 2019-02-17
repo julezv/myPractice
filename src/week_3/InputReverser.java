@@ -1,4 +1,5 @@
 package week_3;
+import java.util.Arrays;
 import java.util.Scanner;
 
 
@@ -21,5 +22,14 @@ public class InputReverser {
             System.out.println("Input an integer");
         }
         System.out.println(sb.reverse());
+
+        int i = 0;
+        int[] a = new int[10];
+        while (i < 10) {    //i = 9
+            //a[i++] = i;       //i++ = 9, i = 10
+            a[++i] = i;     //++i = 10, i = 10 => a[10] = 10
+        }
+        System.out.println(Arrays.toString(a));
+
     }
 }
