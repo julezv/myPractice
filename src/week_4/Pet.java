@@ -22,7 +22,7 @@ public class Pet {
     }
 
     public void setName() {
-        this.name =  name;
+        this.name = name;
     }
 
     public int getAge() {
@@ -30,10 +30,10 @@ public class Pet {
     }
 
     public void setAge() {
-        this.age =  age;
+        this.age = age;
     }
 
-    public String talk(){
+    public String talk() {
         return ("Hello, I am a pet");
     }
 
