@@ -6,49 +6,25 @@ import java.util.stream.Collectors;
 /**
  * Created by ulya on 26.02.19.
  */
-public class BinaryScaleConverterMainClass {  //javac BinaryScaleConverterMainClass.java => BinaryScaleConverterMainClass.class
-                                              //java BinaryScaleConverterMainClass Hello 3 5!=120
+public class BinaryScaleConverterMainClass {  //javac BinaryScaleConverterMainClass_Upd.java => BinaryScaleConverterMainClass_Upd.class
+                                              //java BinaryScaleConverterMainClass_Upd Hello 3 5!=120
                                               //ls -lr ./myDocuments
     public static void main(String[] args) { //args = command line argument
 
-        //usage: BinaryScaleConverterMainClass n [-soty] ...
+        //usage: BinaryScaleConverterMainClass_Upd n [-soty] ...
         //-s -o -t -y 0010 0001
         //2 -t -o => twosComplement: 0000 0010, onesComplment: 0000 0010
         //127 -o => onesComplement: 0111 1111
         //255 -y => Absolute positive input ......
         //-1 => no format option => twosComplement: 1111 1111
         //
-
+        System.out.println(yuliaComplementRepresentation(-6));
+        System.out.println(signedMagnitudeRepresentation(-6));
+        System.out.println(onesComplementRepresentation(-6));
+        System.out.println(twosComplementRepresentation(-6));
         System.out.println(Arrays.toString(args));
-        Integer a  = 0 ;
 
-        try {
-            a = Integer.parseInt(args[0]);
-        }catch (Exception e){
-            System.out.println("first arg should be an int, otherwise all conversions are performed for 0");
-        }
-        for (int i = 1; i < args.length -1; ++i){
-            if (args[i].equals("-s")){
-                System.out.printf("%d in signed magnitude representation:  ", a);
-                System.out.println(signedMagnitudeRepresentation(a));
-            }
-            else if(args[i].equals("-o")){
-                System.out.printf("%d in one's complement representation:  ", a);
-                System.out.println(onesComplementRepresentation(a));
-            }
-            else if(args[i].equals("-t")){
-                System.out.printf("%d in two's complement representation:  ", a);
 
-                System.out.println(twosComplementRepresentation(a));
-            }
-            else if(args[i].equals("-y")){
-                System.out.printf("%d in yulia's complement representation:  ", a);
-
-                System.out.println(yuliaComplementRepresentation(a));
-            }else{
-                System.out.println("unknown parameter: " + args[i]);
-            }
-        }
     }
 
     private static void reverse(int[] data) {
