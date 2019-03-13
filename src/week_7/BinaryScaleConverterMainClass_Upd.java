@@ -7,10 +7,8 @@ import java.util.stream.Collectors;
 /**
  * Created by ulya on 13.03.19.
  */
-public class BinaryScaleConverterMainClass_Upd {  //javac BinaryScaleConverterMainClass_Upd.java => BinaryScaleConverterMainClass_Upd.class
-    //java BinaryScaleConverterMainClass_Upd Hello 3 5!=120
-    //ls -lr ./myDocuments
-    public static void main(String[] args) { //args = command line argument
+public class BinaryScaleConverterMainClass_Upd {
+    public static void main(String[] args) {
 
         //usage: n -s -t n -y - o
 
